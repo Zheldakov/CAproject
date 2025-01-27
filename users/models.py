@@ -7,13 +7,13 @@ from django.utils.translation import gettext_lazy as _
 NULLABLE ={'blank': True, 'null': True}
 
 class UserRoles(models.TextChoices):
-    """ Роли пользователь """
+    """ Модель ролей пользователей """
     ADMIN = 'admin', _('Администратор')
     MODERATOR = 'moderator', _('Модератор')
     USER = 'user', _('Пользователь')
 
 class User(AbstractUser):
-    """Модель пользователя с полями email, телефон и Telegram username."""
+    """ Модель пользователя с полями email, телефон и Telegram username """
     username = None
     email = models.EmailField(unique=True,verbose_name='E-mail')
     role = models.CharField(max_length=9, choices=UserRoles.choices, default=UserRoles.USER)

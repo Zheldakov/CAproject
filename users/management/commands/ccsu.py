@@ -1,4 +1,3 @@
-"""Команда создания администратора Django (DjangoAdmin)"""
 from django.core.management import BaseCommand
 
 from users.models import User
@@ -6,6 +5,7 @@ from config.settings import SU_DJANGO_PASSWORD,MODERATOR_PASSWORD,USER_PASSWORD
 
 
 class Command(BaseCommand):
+    """Команда создания пользователей по умолчанию в проекте"""
     def handle(self, *args, **options):
         admin = User.objects.create(
             email='admin@ca.ru',

@@ -47,7 +47,7 @@ def user_logout_view(request):
 
 
 class UserCreateView(CreateView):
-    """ Создание пользователя."""
+    """ Создание пользователя """
     model = User
     form_class = UserCreateForm
     success_url = reverse_lazy('users:users_list')
@@ -58,7 +58,7 @@ class UserCreateView(CreateView):
 
 
 class UserProfileView(DetailView):
-    """ Просмотр профиля пользователя."""
+    """ Просмотр профиля пользователя """
     model = User
     # form_class = UserForm
     template_name = 'users/user_profile.html'
@@ -71,7 +71,7 @@ class UserProfileView(DetailView):
 
 
 class UserUpdateView(UpdateView):
-    """ Изменение профиля пользователя."""
+    """ Изменение профиля пользователя """
     model = User
     form_class = UserForm
     template_name = 'users/user_update.html'
@@ -86,7 +86,7 @@ class UserUpdateView(UpdateView):
 
 
 class UserPasswordChangeView(PasswordChangeView):
-    """ Изменение пароля пользователя."""
+    """ Изменение пароля пользователя """
     form_class = UserPasswordChangeForm
     template_name = 'users/password_change.html'
     success_url = reverse_lazy('technic:technic_list')
@@ -103,7 +103,7 @@ class UserPasswordChangeView(PasswordChangeView):
 
 # Для работы с остальными пользователями (для админа)
 class UserListView(LoginRequiredMixin, ListView):
-    """ Список всех пользователей."""
+    """ Список всех пользователей """
     model = User
     paginate_by = 6
     template_name = 'users/users_all.html'
@@ -113,7 +113,7 @@ class UserListView(LoginRequiredMixin, ListView):
 
 
 class AllUserProfileView(DetailView):
-    """ Просмотр профиля других пользователей."""
+    """ Просмотр профиля других пользователей """
     model = User
     template_name = 'users/user_profile_all.html'
     extra_context = {
@@ -122,7 +122,7 @@ class AllUserProfileView(DetailView):
 
 
 class ALLUserUpdateView(UpdateView):
-    """ Изменение профиля других пользователей."""
+    """ Изменение профиля других пользователей """
     model = User
     form_class = UserForm
     template_name = 'users/user_update_all.html'
@@ -136,7 +136,7 @@ class ALLUserUpdateView(UpdateView):
 
 
 class UserDeleteView(PermissionRequiredMixin, DeleteView):
-    """ Страница удаления пользователя."""
+    """ Страница удаления пользователя """
     model = User
     template_name = 'users/user_delete.html'
     # Переходим на страницу со списком питомцев после удаления

@@ -1,10 +1,10 @@
-"""Команда создания базы данных Django (DjangoDB)"""
 from django.core.management import BaseCommand
 import pyodbc
 from config.settings import DATABASE, USER, PASSWORD, HOST, DRIVER, PAD_DATABASE
 
 
 class Command(BaseCommand):
+    """Команда создания базы дынных проекта"""
     def handle(self, *args, **options):
         print("Старт создания БД")
         ConnectionString = f'''

@@ -9,7 +9,7 @@ from users.validators import validate_password
 
 
 class UserLoginForm(forms.Form):
-    """ Форма для авторизации пользователя."""
+    """ Форма для авторизации пользователя """
     email = forms.EmailField(widget=forms.TextInput(attrs={
         'class': 'input_login',
         'placeholder': 'Почта'
@@ -21,7 +21,7 @@ class UserLoginForm(forms.Form):
 
 
 class UserForm(forms.ModelForm):
-    """ Форма пользователя."""
+    """ Форма пользователя """
 
     class Meta:
         model = User
@@ -30,7 +30,7 @@ class UserForm(forms.ModelForm):
 
 
 class UserCreateForm(UserCreationForm):
-    """ Форма для создания нового пользователя."""
+    """ Форма для создания нового пользователя """
 
     class Meta:
         # Поля модели User
@@ -40,7 +40,7 @@ class UserCreateForm(UserCreationForm):
 
 
 class UserPasswordChangeForm(PasswordChangeForm):
-    """ Форма для смены пароля."""
+    """ Форма для смены пароля """
 
     def clean_new_password2(self):
         # Проверка соответствия паролей
