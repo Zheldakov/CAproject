@@ -14,6 +14,5 @@ class ArticleForm(forms.ModelForm):
                 'cols': 65, 'rows': 5,
                 'class': 'text_article_form'}),
             'text': forms.Textarea(attrs={
-                # 'cols': 65, 'rows': 20,
                 'class': 'text_article_form'}),
         }

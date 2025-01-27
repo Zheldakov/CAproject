@@ -31,7 +31,7 @@ class ArticleDetailView(DetailView):
 
 
 class ArticleCreateView(CreateView):
-    """ Создание техники"""
+    """ Создание новой статьи"""
     model = Article
     form_class = ArticleForm
     success_url = reverse_lazy('news:news_list')
@@ -46,7 +46,7 @@ class ArticleCreateView(CreateView):
 
 
 class ArticleUpdateView(UpdateView):
-    """ Изменение статьи."""
+    """ Редактирование статьи"""
     model = Article
     form_class = ArticleForm
     template_name = 'news/news_create.html'
