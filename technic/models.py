@@ -5,7 +5,7 @@ from users.models import NULLABLE
 
 
 class TypeTechnic(models.Model):
-    """Тип техники"""
+    """Модель типа техники"""
     name = models.CharField(max_length=100, verbose_name='Тип', **NULLABLE)  # `Имя типа техники
     description = models.CharField(max_length=150, verbose_name='Описание', **NULLABLE)  # Описание
 
@@ -18,7 +18,7 @@ class TypeTechnic(models.Model):
 
 
 class Department(models.Model):
-    """Подразделение техники"""
+    """Модель подразделения"""
     name = models.CharField(max_length=100, verbose_name='Подразделение', **NULLABLE)  # Имя подразделения
     description = models.CharField(max_length=150, verbose_name='Описание', **NULLABLE)  # Описание
 
@@ -31,7 +31,7 @@ class Department(models.Model):
 
 
 class Technic(models.Model):
-    """Техника"""
+    """Модель техники"""
     name = models.CharField(max_length=250, verbose_name='Наименование', **NULLABLE)  # Наименование техники
     type = models.ForeignKey(TypeTechnic, on_delete=models.CASCADE, verbose_name='Тип')  # Тип техники
     photo = models.ImageField(upload_to='technic/', verbose_name='Изображение', **NULLABLE)  # Фотография техники
@@ -52,7 +52,7 @@ class Technic(models.Model):
 
 
 class Service(models.Model):
-    """Техническое обслуживание"""
+    """Модель технического обслуживания"""
     technic = models.ForeignKey(Technic, on_delete=models.CASCADE)  # Техника на которой проведен сервис
     work = models.CharField(max_length=100, verbose_name='Работа')  # Проведенная работа
     date = models.DateField(**NULLABLE, verbose_name='Дата выполнения')  # Дата проведения работы

@@ -87,7 +87,7 @@ class Glonasssoft:
             return None
 
     def get_technic(self, id_technic):
-        # Запрос для получения данных по объекту, принемает id объекта
+        # Запрос для получения данных по объекту, принимает id объекта
 
         headers = {'X-Auth': self.post_auth()['AuthId']}
         indicator = True
@@ -126,7 +126,7 @@ class Glonasssoft:
 
     @staticmethod
     def get_fild(last_message):
-        # Функция переберает все геозоны и находит самое первое с/х поле
+        # Функция перебирает все геозоны и находит самое первое с/х поле
         import re
         re_fild = re.compile('^[А-Я]{3}-[А-Я]{2,3}-[0-9]{3}-[0-9]{2}$')
         if last_message[0]['geozones'] != []:

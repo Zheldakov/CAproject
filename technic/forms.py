@@ -3,7 +3,7 @@ from .models import Department, TypeTechnic, Technic, Service
 
 
 class DepartmentForm(forms.ModelForm):
-    """ Форма подразделения."""
+    """ Форма подразделения"""
 
     class Meta:
         model = Department
@@ -30,7 +30,7 @@ class TypeTechnicForm(forms.ModelForm):
 
 
 class TechnicForm(forms.ModelForm):
-    """ Форма типа техники"""
+    """ Форма техники"""
 
     class Meta:
         model = Technic

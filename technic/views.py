@@ -4,7 +4,6 @@ from django.forms import inlineformset_factory
 from django.urls import reverse_lazy
 from django.shortcuts import reverse
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView
-from pyexpat.errors import messages
 
 from technic.forms import DepartmentForm, TypeTechnicForm, TechnicForm, ServiceForm
 from technic.models import Technic, TypeTechnic, Department, Service
@@ -12,7 +11,7 @@ from technic.service import get_info
 
 
 class TechnicListView(ListView):
-    """ Список всей техники."""
+    """ Список всей техники"""
     model = Technic
     paginate_by = 6
     template_name = 'technic/technic_list.html'
@@ -53,7 +52,7 @@ class TechnicUpdateView(UpdateView):
 
 
 class TechnicServiceUpdateView(UpdateView):
-    """ Странина сервиса техники"""
+    """ Странина для добавления/обновления сервиса техники"""
     model = Technic
     form_class = TechnicForm
     template_name = 'technic/technic_service_update.html'
@@ -86,7 +85,7 @@ class TechnicServiceUpdateView(UpdateView):
 
 
 class TechnicDeleteView(PermissionRequiredMixin, DeleteView):
-    """ Страница удаления техники."""
+    """ Удаление техники."""
     model = Technic
     template_name = 'technic/technic_delete.html'
     success_url = reverse_lazy('technic:technic_list')
@@ -137,7 +136,7 @@ class DepartmentUpdateView(UpdateView):
 
 
 class DepartmentDeleteView(PermissionRequiredMixin, DeleteView):
-    """ Страница удаления подразделения."""
+    """ Удаление подразделения"""
     model = Department
     template_name = 'technic/dep_delete.html'
     success_url = reverse_lazy('technic:department_list')
@@ -170,7 +169,7 @@ class TypeTechnicUpdateView(UpdateView):
 
 
 class TypeTechnicDeleteView(PermissionRequiredMixin, DeleteView):
-    """ Страница удаления типа пользователя."""
+    """ Удаление типа техники"""
     model = TypeTechnic
     template_name = 'technic/type_delete.html'
     success_url = reverse_lazy('technic:type_list')
@@ -181,7 +180,7 @@ class TypeTechnicDeleteView(PermissionRequiredMixin, DeleteView):
 
 
 class TechnicListFilterDepartmentView(ListView):
-    """ Список всей техники определенного подразделения."""
+    """ Список всей техники определенного подразделения"""
     model = Technic
     paginate_by = 6
     template_name = 'technic/technic_list.html'
@@ -198,7 +197,7 @@ class TechnicListFilterDepartmentView(ListView):
 
 
 class TechnicListFilterTypeTechnicView(ListView):
-    """ Список всей техники определенного типа."""
+    """ Список всей техники определенного типа"""
     model = Technic
     paginate_by = 6
     template_name = 'technic/technic_list.html'
@@ -215,7 +214,7 @@ class TechnicListFilterTypeTechnicView(ListView):
 
 
 class TechnicSearchListView(LoginRequiredMixin, ListView):
-    """ Показывает страницу с результатами поиска техники по гос. Номеру."""
+    """ Показывает страницу с результатами поиска техники по гос. Номеру"""
     model = Technic
     template_name = 'technic/technic_list.html'
     extra_context = {
@@ -261,6 +260,7 @@ class ServiceFilterTechnicView(ListView):
         return contex_data
 
 class TechnicLostDataView(DetailView):
+    """Дынные о последнем местонахождении техники"""
     model = Technic
     template_name = 'technic/technic_glonass_detail.html'
 
