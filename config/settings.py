@@ -17,6 +17,8 @@ from dotenv import load_dotenv
 
 import os
 
+load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # Полный путь к корневому каталогу проекта
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # секретный ключ Django, который должен быть уникальным и безопасным
-SECRET_KEY = 'django-insecure-53deg%z)99kaulr1#)6(iw7%f449(i2lbtn_^3b%^qj(a^1q2k'
+SECRET_KEY = os.getenv('MSECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # Разрешает отключение проверки безопасности во время разработки (DEBUG = False при окончании разработки)
@@ -90,7 +92,6 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 # настройки ДБ ( MS SQL Server)
-load_dotenv()
 USER = os.getenv('MS_SQL_USER')
 PASSWORD = os.getenv('MS_SQL_KEY')
 HOST = os.getenv('MS_SQL_SERVER')
@@ -111,7 +112,9 @@ DATABASES = {
         'HOST': HOST,
         'PORT': '',
         'OPTIONS':{
-            'driver':DRIVER
+            'driver':DRIVER,
+            'collation': 'Cyrillic_General_CI_AS',
+            'extra_params': 'Encrypt=no',
         }
     }
 }
