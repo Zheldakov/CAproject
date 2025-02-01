@@ -1,0 +1,330 @@
+[
+  {
+    "model": "technic.typetechnic",
+    "pk": 1,
+    "fields": {
+      "name": "Трактор",
+      "description": null
+    }
+  },
+  {
+    "model": "technic.typetechnic",
+    "pk": 2,
+    "fields": {
+      "name": "Тяжелый трактор",
+      "description": null
+    }
+  },
+  {
+    "model": "technic.typetechnic",
+    "pk": 3,
+    "fields": {
+      "name": "Комбайны",
+      "description": "Уборочная техника"
+    }
+  },
+  {
+    "model": "technic.typetechnic",
+    "pk": 4,
+    "fields": {
+      "name": "Грузовой автотранспорт",
+      "description": "Грузовые машины"
+    }
+  },
+  {
+    "model": "technic.typetechnic",
+    "pk": 5,
+    "fields": {
+      "name": "Легковой автотранспорт",
+      "description": null
+    }
+  },
+  {
+    "model": "technic.department",
+    "pk": 1,
+    "fields": {
+      "name": "АК \"Нива\"",
+      "description": "Производственная площадь: 4 681.9 га."
+    }
+  },
+  {
+    "model": "technic.department",
+    "pk": 2,
+    "fields": {
+      "name": "АК \"Велес\"",
+      "description": "Производственная площадь: 7 767.8 га."
+    }
+  },
+  {
+    "model": "technic.department",
+    "pk": 3,
+    "fields": {
+      "name": "АК \"Глушковский\"",
+      "description": "Производственная площадь: 29 266.2 га."
+    }
+  },
+  {
+    "model": "technic.department",
+    "pk": 4,
+    "fields": {
+      "name": "АК \"Олымский\"",
+      "description": "Производственная площадь: 39 546.2 га."
+    }
+  },
+  {
+    "model": "technic.technic",
+    "pk": 1,
+    "fields": {
+      "name": "МТЗ 82.1",
+      "type": 1,
+      "photo": "",
+      "number": "2108ка46",
+      "invnumber": 123124,
+      "imei": 868926037901532,
+      "department": 2,
+      "is_active": true
+    }
+  },
+  {
+    "model": "technic.technic",
+    "pk": 5,
+    "fields": {
+      "name": "Уаз",
+      "type": 5,
+      "photo": "",
+      "number": "о660ом46",
+      "invnumber": 2342423,
+      "imei": 869286033863643,
+      "department": 4,
+      "is_active": true
+    }
+  },
+  {
+    "model": "technic.technic",
+    "pk": 6,
+    "fields": {
+      "name": "John Deere",
+      "type": 2,
+      "photo": "",
+      "number": "6893ке46",
+      "invnumber": 121312,
+      "imei": 864495035851549,
+      "department": 4,
+      "is_active": true
+    }
+  },
+  {
+    "model": "technic.technic",
+    "pk": 7,
+    "fields": {
+      "name": "РСМ",
+      "type": 3,
+      "photo": "",
+      "number": "1233ку46",
+      "invnumber": 213654,
+      "imei": 457643453,
+      "department": 4,
+      "is_active": true
+    }
+  },
+  {
+    "model": "technic.technic",
+    "pk": 8,
+    "fields": {
+      "name": "К-700",
+      "type": 2,
+      "photo": "",
+      "number": "5437км46",
+      "invnumber": 464564,
+      "imei": 9348756,
+      "department": 1,
+      "is_active": true
+    }
+  },
+  {
+    "model": "technic.technic",
+    "pk": 9,
+    "fields": {
+      "name": "МТЗ 82.1",
+      "type": 1,
+      "photo": "",
+      "number": "1236км46",
+      "invnumber": 111,
+      "imei": 111,
+      "department": 1,
+      "is_active": true
+    }
+  },
+  {
+    "model": "technic.technic",
+    "pk": 10,
+    "fields": {
+      "name": "МТЗ 82.1",
+      "type": 1,
+      "photo": "",
+      "number": "2575ка46",
+      "invnumber": 1231231231,
+      "imei": 41111,
+      "department": 1,
+      "is_active": true
+    }
+  },
+  {
+    "model": "technic.technic",
+    "pk": 11,
+    "fields": {
+      "name": "Камаз",
+      "type": 4,
+      "photo": "",
+      "number": "к234ва46",
+      "invnumber": 2147483647,
+      "imei": 2147483647,
+      "department": 2,
+      "is_active": true
+    }
+  },
+  {
+    "model": "technic.technic",
+    "pk": 12,
+    "fields": {
+      "name": "Камаз",
+      "type": 4,
+      "photo": "",
+      "number": "к255ва46",
+      "invnumber": 868926037902100,
+      "imei": 868926037902100,
+      "department": 1,
+      "is_active": true
+    }
+  },
+  {
+    "model": "technic.technic",
+    "pk": 13,
+    "fields": {
+      "name": "МТЗ 82.1",
+      "type": 1,
+      "photo": "",
+      "number": "1144оо46",
+      "invnumber": 868926037902100,
+      "imei": 868926037902100,
+      "department": 3,
+      "is_active": true
+    }
+  },
+  {
+    "model": "technic.technic",
+    "pk": 14,
+    "fields": {
+      "name": "Лада Гранта",
+      "type": 5,
+      "photo": "",
+      "number": "в832км46",
+      "invnumber": 868926037902100111,
+      "imei": 868926037902100,
+      "department": 3,
+      "is_active": true
+    }
+  },
+  {
+    "model": "technic.technic",
+    "pk": 15,
+    "fields": {
+      "name": "John Deere",
+      "type": 2,
+      "photo": "",
+      "number": "7665ва46",
+      "invnumber": 999999999999999999,
+      "imei": 868926037902100,
+      "department": 4,
+      "is_active": true
+    }
+  },
+  {
+    "model": "technic.technic",
+    "pk": 16,
+    "fields": {
+      "name": "John Deere",
+      "type": 2,
+      "photo": "",
+      "number": "8765ро46",
+      "invnumber": 868926037902100,
+      "imei": 868926037902100,
+      "department": 2,
+      "is_active": true
+    }
+  },
+  {
+    "model": "technic.technic",
+    "pk": 17,
+    "fields": {
+      "name": "Нива 4x4",
+      "type": 5,
+      "photo": "",
+      "number": "н117ук46",
+      "invnumber": null,
+      "imei": null,
+      "department": 3,
+      "is_active": true
+    }
+  },
+  {
+    "model": "technic.service",
+    "pk": 30,
+    "fields": {
+      "technic": 1,
+      "work": "Замена терминала",
+      "date": "2022-05-22",
+      "description": "Был заменен терминал системы мониторинга транспорта, также заменена сим-карта, заменена антенна gps и gsm. Были проведены работы по обновлению программного обесечения."
+    }
+  },
+  {
+    "model": "technic.service",
+    "pk": 33,
+    "fields": {
+      "technic": 1,
+      "work": "Обновление ПО",
+      "date": "2023-09-27",
+      "description": "Было проведено обновление программного обеспечения терминала системы спутникового мониторинга"
+    }
+  },
+  {
+    "model": "technic.service",
+    "pk": 34,
+    "fields": {
+      "technic": 1,
+      "work": "Установка ДУТ",
+      "date": "2023-12-13",
+      "description": "Установлен и настроен датчик уровня топлива (ДУТ)"
+    }
+  },
+  {
+    "model": "technic.service",
+    "pk": 36,
+    "fields": {
+      "technic": 6,
+      "work": "Обновление ПО",
+      "date": "2024-08-12",
+      "description": "Проведено обновление ПО на терминале системы спутникового мониторинга"
+    }
+  },
+  {
+    "model": "technic.service",
+    "pk": 38,
+    "fields": {
+      "technic": 5,
+      "work": "Замена антенн GSM и GPS",
+      "date": "2024-06-13",
+      "description": "Были полностью заменены антенны GSM и GPS, так же предохранительная колодка через которую подключен прибор спутникового мониторинга."
+    }
+  },
+  {
+    "model": "technic.service",
+    "pk": 39,
+    "fields": {
+      "technic": 5,
+      "work": "Прошивка терминала",
+      "date": "2024-10-18",
+      "description": "Был прошит на новое ПО, прибор системы спутникового мониторинга."
+    }
+  }
+]
