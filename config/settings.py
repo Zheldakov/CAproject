@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # секретный ключ Django, который должен быть уникальным и безопасным
-SECRET_KEY = os.getenv('MSECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # Разрешает отключение проверки безопасности во время разработки (DEBUG = False при окончании разработки)
