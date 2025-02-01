@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView, DetailView, ListView, DeleteView, CreateView
 
-from users.forms import UserLoginForm, UserForm, UserPasswordChangeForm, UserCreateForm
+from users.forms import UserLoginForm, UserForm, UserPasswordChangeForm, UserCreateForm, UserFormUpdate
 from users.models import User
 
 
@@ -73,7 +73,7 @@ class UserProfileView(DetailView):
 class UserUpdateView(UpdateView):
     """ Изменение профиля пользователя """
     model = User
-    form_class = UserForm
+    form_class = UserFormUpdate
     template_name = 'users/user_update.html'
     success_url = reverse_lazy('users:profile_user')
     extra_context = {

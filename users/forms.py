@@ -28,6 +28,14 @@ class UserForm(forms.ModelForm):
         fields = ('first_name', 'last_name', 'email',
                   'phone', 'telegram', 'avatar', 'role', 'is_active',)
 
+class UserFormUpdate(forms.ModelForm):
+    """ Форма обновления данных пользователя """
+
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'email',
+                  'phone', 'telegram', 'avatar',)
+
 
 class UserCreateForm(UserCreationForm):
     """ Форма для создания нового пользователя """
