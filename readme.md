@@ -96,7 +96,10 @@ pythone manage.py ccsu
 ### 7. Заполнение БД данными для примера (не обязательно)
 
 ```shell
-python loaddata fixtures/all_data_is_base.json   
+# загрузка примера данных по технике
+python loaddata fixtures/all_technic_data_is_base.json 
+# загрузка примера новостей
+python loaddata fixtures/all_news_data_is_base.json 
 ```
 
 ### 8. Запуск сервера
