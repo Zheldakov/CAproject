@@ -8,6 +8,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView, DetailView, ListView, DeleteView, CreateView
 
+
+from users.action import journal_user_action
 from users.forms import UserLoginForm, UserForm, UserPasswordChangeForm, UserCreateForm, UserFormUpdate
 from users.models import User
 
@@ -55,12 +57,16 @@ class UserCreateView(CreateView):
     extra_context = {
         'title': f'Добавление пользователя'
     }
+    def form_valid(self, form):
+        # Вызываем метод для записи действия пользователя через form_valid
+        self.object = form.save() # сохраняем созданный объект
+        journal_user_action(self.request.user, f"Создание пользователя {self.object.email}")
+        return super().form_valid(form)
 
 
 class UserProfileView(DetailView):
     """ Просмотр профиля пользователя """
     model = User
-    # form_class = UserForm
     template_name = 'users/user_profile.html'
     extra_context = {
         'title': f'Профиль пользователя'
@@ -80,9 +86,15 @@ class UserUpdateView(UpdateView):
         'title': f'Редактирование профиля'
     }
 
+
     def get_object(self, queryset=None):
         # Получаем пользователя
         return self.request.user
+
+    def form_valid(self, form):
+        # Вызываем метод для записи действия пользователя через form_valid
+        journal_user_action(self.request.user, f"Обновление профиля {self.object.email}")
+        return super().form_valid(form)
 
 
 class UserPasswordChangeView(PasswordChangeView):
@@ -99,6 +111,11 @@ class UserPasswordChangeView(PasswordChangeView):
         obj = User.objects.get(pk=self.request.user.id)
         context["object.pk"] = obj.id
         return context
+
+    def form_valid(self, form):
+        # Вызываем метод для записи действия пользователя
+        journal_user_action(self.request.user, f"Смена пароля")
+        return super().form_valid(form)
 
 
 # Для работы с остальными пользователями (для админа)
@@ -134,6 +151,11 @@ class ALLUserUpdateView(UpdateView):
         # Переходим на страницу детальной информацию пользователя после редактирования
         return reverse('users:profile_all_user', args=[self.kwargs.get('pk')])
 
+    def form_valid(self, form):
+        # Вызываем метод для записи действия пользователя через form_valid
+        journal_user_action(self.request.user, f"Обновление профиля {self.object.email}")
+        return super().form_valid(form)
+
 
 class UserDeleteView(PermissionRequiredMixin, DeleteView):
     """ Страница удаления пользователя """
@@ -145,3 +167,7 @@ class UserDeleteView(PermissionRequiredMixin, DeleteView):
     extra_context = {
         'title': f'Удаление пользователя'
     }
+    def form_valid(self, form):
+        # Вызываем метод для записи действия пользователя через form_valid
+        journal_user_action(self.request.user, f"Удаление профиля {self.object.email}")
+        return super().form_valid(form)

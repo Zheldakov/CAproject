@@ -3,6 +3,9 @@ from django.db import models
 from django.contrib.auth.models import  AbstractUser
 from django.utils.translation import gettext_lazy as _
 
+
+
+
 # настройка полей, чтобы возможно было заполнить поля пустыми
 NULLABLE ={'blank': True, 'null': True}
 
@@ -30,7 +33,17 @@ class User(AbstractUser):
     def __str__(self):
         return  f'{self.email}'
 
+    # @staticmethod
+    # def action_logging(user,action):
+    #     journal_user_action(user, action)
+
     class Meta:
         verbose_name = 'Пользователь'
         verbose_name_plural ='Пользователи'
         ordering = ['id']
+
+class Action(models.Model):
+    """Действия пользователей"""
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    action = models.CharField(max_length=255)
+    date = models.DateTimeField(auto_now_add=True)

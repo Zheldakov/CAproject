@@ -6,6 +6,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView, D
 
 from news.forms import ArticleForm
 from news.models import Article
+from users.action import journal_user_action
 
 
 class NewsListView(ListView):
@@ -42,6 +43,8 @@ class ArticleCreateView(CreateView):
 
     def form_valid(self, form):
         form.instance.date = datetime.now()  # assuming you want the current login user to be set to the user
+        self.object = form.save()  # сохраняем созданный объект
+        journal_user_action(self.request.user, f"Создание статьи {self.object.title}")
         return super(ArticleCreateView, self).form_valid(form)
 
 
@@ -60,6 +63,7 @@ class ArticleUpdateView(UpdateView):
             contex_data['title'] = f'Редактирование статьи {article_name}'
         else:
             contex_data['title'] = f'Нет статьи'
+        journal_user_action(self.request.user, f"Редактирование статьи {self.object.title}")
         return contex_data
 
 
@@ -72,3 +76,7 @@ class ArticleDeleteView(PermissionRequiredMixin, DeleteView):
     extra_context = {
         'title': f'Удаление статьи'
     }
+    def form_valid(self, form):
+        # Вызываем метод для записи действия пользователя через form_valid
+        journal_user_action(self.request.user, f"Удаление статьи {self.object.title}")
+        return super().form_valid(form)

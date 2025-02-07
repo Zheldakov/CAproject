@@ -8,6 +8,7 @@ from django.views.generic import ListView, UpdateView, DeleteView, CreateView, D
 from technic.forms import DepartmentForm, TypeTechnicForm, TechnicForm, ServiceForm
 from technic.models import Technic, TypeTechnic, Department, Service
 from technic.service import get_info
+from users.action import journal_user_action
 
 
 class TechnicListView(ListView):
@@ -29,6 +30,11 @@ class TechnicCreateView(CreateView):
     extra_context = {
         'title': f'Добавление техники'
     }
+    def form_valid(self, form):
+        # Вызываем метод для записи действия пользователя через form_valid
+        self.object = form.save()  # сохраняем созданный объект
+        journal_user_action(self.request.user, f"Создание техники{self.object.name} {self.object.number}")
+        return super().form_valid(form)
 
 
 class TechnicDetailView(DetailView):
@@ -49,6 +55,11 @@ class TechnicUpdateView(UpdateView):
     def get_success_url(self):
         # Переходим на страницу детальной информации по технике после редактирования
         return reverse('technic:technic_detail', args=[self.kwargs.get('pk')])
+
+    def form_valid(self, form):
+        # Вызываем метод для записи действия пользователя через form_valid
+        journal_user_action(self.request.user, f"Редактирование техники{self.object.name} {self.object.number}")
+        return super().form_valid(form)
 
 
 class TechnicServiceUpdateView(UpdateView):
@@ -94,6 +105,11 @@ class TechnicDeleteView(PermissionRequiredMixin, DeleteView):
         'title': f'Удаление техники'
     }
 
+    def form_valid(self, form):
+        # Вызываем метод для записи действия пользователя через form_valid
+        journal_user_action(self.request.user, f"Удаление техники{self.object.name} {self.object.number}")
+        return super().form_valid(form)
+
 
 class DepartmentListView(ListView):
     """ Показывает страницу с информацией о техники определенного подразделения"""
@@ -123,6 +139,12 @@ class DepartmentCreateView(CreateView):
         'title': f'Создание отделения'
     }
 
+    def form_valid(self, form):
+        # Вызываем метод для записи действия пользователя через form_valid
+        self.object = form.save()  # сохраняем созданный объект
+        journal_user_action(self.request.user, f"Создание подразделения/отделения {self.object.name}")
+        return super().form_valid(form)
+
 
 class DepartmentUpdateView(UpdateView):
     """ Изменение подразделения"""
@@ -133,6 +155,10 @@ class DepartmentUpdateView(UpdateView):
     extra_context = {
         'title': f'Редактирование отделения'
     }
+    def form_valid(self, form):
+        # Вызываем метод для записи действия пользователя через form_valid
+        journal_user_action(self.request.user, f"Редактирование подразделения/отделения {self.object.name}")
+        return super().form_valid(form)
 
 
 class DepartmentDeleteView(PermissionRequiredMixin, DeleteView):
@@ -145,6 +171,11 @@ class DepartmentDeleteView(PermissionRequiredMixin, DeleteView):
         'title': f'Удаление отделения'
     }
 
+    def form_valid(self, form):
+        # Вызываем метод для записи действия пользователя через form_valid
+        journal_user_action(self.request.user, f"Удаление подразделения/отделения {self.object.name}")
+        return super().form_valid(form)
+
 
 class TypeTechnicCreateView(CreateView):
     """ Создание типа техники"""
@@ -155,7 +186,11 @@ class TypeTechnicCreateView(CreateView):
     extra_context = {
         'title': f'Создание типа техники'
     }
-
+    def form_valid(self, form):
+        # Вызываем метод для записи действия пользователя через form_valid
+        self.object = form.save()  # сохраняем созданный объект
+        journal_user_action(self.request.user, f"Создание типа техники {self.object.name}")
+        return super().form_valid(form)
 
 class TypeTechnicUpdateView(UpdateView):
     """ Изменение типа техники."""
@@ -167,6 +202,11 @@ class TypeTechnicUpdateView(UpdateView):
         'title': f'Редактирование отделения'
     }
 
+    def form_valid(self, form):
+        # Вызываем метод для записи действия пользователя через form_valid
+        journal_user_action(self.request.user, f"Редактирование типа техники {self.object.name}")
+        return super().form_valid(form)
+
 
 class TypeTechnicDeleteView(PermissionRequiredMixin, DeleteView):
     """ Удаление типа техники"""
@@ -177,6 +217,12 @@ class TypeTechnicDeleteView(PermissionRequiredMixin, DeleteView):
     extra_context = {
         'title': f'Удаление типа техники'
     }
+
+    def form_valid(self, form):
+        # Вызываем метод для записи действия пользователя через form_valid
+        self.object = form.save()  # сохраняем созданный объект
+        journal_user_action(self.request.user, f"Удаление типа техники {self.object.name}")
+        return super().form_valid(form)
 
 
 class TechnicListFilterDepartmentView(ListView):
