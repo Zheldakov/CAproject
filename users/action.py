@@ -12,4 +12,3 @@ def journal_user_action(user, action):
     # Удаления записей которым больше 360 дней
     cutoff_date = timezone.now() - timedelta(days=360)
     deleted_count, _ = Action.objects.filter(date__lt=cutoff_date).delete()
-    print("Удалено", deleted_count)
