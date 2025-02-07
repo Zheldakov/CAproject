@@ -20,6 +20,10 @@ class TechnicListView(ListView):
         'title': f'Техника'
     }
 
+    def get_queryset(self):
+        # Упорядочиваем QuerySet
+        return Technic.objects.all().order_by('type')
+
 
 class TechnicCreateView(CreateView):
     """ Создание техники"""
